@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate Face Expression</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        body {
+            background-image: url('{{ url_for('static', filename='images/background_image.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Generate Face Expression</h1>
+        <form action="{{ url_for('generate_face') }}" method="post">
+            <label for="generation_model">Choose a generation model:</label>
+            <select name="generation_model" id="generation_model">
+                <option value="dcgan">Generate with DCGAN</option>
+                <option value="vae">Generate with VAE</option>
+            </select>
+            <br><br>
+            <button type="submit">Generate</button>
+        </form>
+    </div>
+</body>
+</html>

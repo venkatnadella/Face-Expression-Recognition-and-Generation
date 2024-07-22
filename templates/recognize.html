@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recognize Face Expression</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <style>
+        body {
+            background-image: url('{{ url_for('static', filename='images/background_image.jpg') }}');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Recognize Face Expression</h1>
+        <form action="{{ url_for('predict') }}" method="post" enctype="multipart/form-data">
+            <label for="file">Upload face image:</label>
+            <input type="file" name="file" id="file" required>
+            <br><br>
+            <label for="model">Choose a model:</label>
+            <select name="model" id="model">
+                <option value="cnn">Predict with CNN</option>
+                <option value="vgg_add_layers">Transfer learnt VGG by adding layers</option>
+                <option value="vgg_unfreeze_layers">Transfer learnt VGG by unfreezing layers</option>
+            </select>
+            <br><br>
+            <button type="submit">Predict</button>
+        </form>
+    </div>
+</body>
+</html>
